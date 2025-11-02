@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import About from "@components/About.astro";
+import Experience from "@components/Experience.astro";
+
+---
+
+<BaseLayout>
+  <!-- About -->
+  <div class="flex flex-col justify-center min-h-[90vh] px-2 pb-16">
+    <About/>
+  </div>
+
+  <!-- Experience -->
+  <div class="mb-5">
+    <div class="text-2xl md:text-4xl w-full font-bold mb-8">
+      <h2 class="relative pl-[60px] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:w-[50px] before:h-[3px] before:bg-base-content">
+        Experience
+      </h2>
+    </div>
+    <Experience/>
+  </div>
+
+
+  <HorizontalCard
+    title="Demo Project 1"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+    badge="NEW"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Demo Project 2"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Demo Project 3"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+    badge="FOSS"
+  />
+
+
+</BaseLayout>

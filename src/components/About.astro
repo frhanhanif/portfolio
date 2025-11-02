@@ -1,0 +1,16 @@
+---
+import AboutContent, { frontmatter } from '../content/about/about.md';
+---
+
+<div class="text-xl font-semibold md:text-2xl py-2">Hey there 👋</div>
+<div class="text-2xl md:text-5xl font-bold">I'm {frontmatter.name}.</div>
+<div class="py-8 prose max-w-none text-lg sm:text-xl md:text-2xl">
+  <AboutContent />
+</div>
+<div class="mt-8">
+  <a class="btn rounded-xl" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
+  <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline rounded-xl ml-5">
+    Get This template
+  </a>
+</div>
+

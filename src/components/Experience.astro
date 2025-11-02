@@ -1,0 +1,67 @@
+---
+// src/components/Experience.astro
+import TimeLineElement from "../components/cv/TimeLine.astro";
+import { getCollection } from 'astro:content';
+
+// load all experience entries from the "experience" collection
+let entries = await getCollection('experience');
+
+// sort by start date descending (newest first). Strings like "2024-01" sort correctly.
+// fallback to title if start missing.
+entries = entries.sort((a, b) => {
+  const aKey = a.data.start ?? a.data.title ?? '';
+  const bKey = b.data.start ?? b.data.title ?? '';
+  return bKey.localeCompare(aKey);
+});
+---
+<section class="space-y-6">
+  <div class="time-line-container mb-12">
+    {entries.map((entry) => {
+      const meta = entry.data;
+      const key = meta.id;
+      const company = meta.company;
+      const title = meta.title;
+      const period = `${meta.start} – ${meta.end}`;
+
+      return (
+
+
+        <TimeLineElement key={key} company={company} title={title} period={period}>
+          <div class="card-actions justify-start my-4">
+            {meta.tech && meta.tech.map((tech) => <div class="badge badge-outline rounded-full p-3 lg:p-4 lg:text-lg">{tech}</div>)}
+          </div>
+          {/* description: array of paragraphs */}
+          {Array.isArray(meta.description) && (
+            <ul class="list-disc list-inside ml-4 mb-6 md:text-lg">
+              {meta.description.map((p, i) => (
+                <li key={`${key}-desc-${i}`}>{p}</li>
+              ))}
+            </ul>
+          )}
+
+          {/* optional projects / highlights */}
+          {Array.isArray(meta.projects) && meta.projects.length > 0 && (
+            <div class="mb-6">
+              <h4 class="font-medium md:text-lg">Projects Highlights</h4>
+              <div class="space-y-2 mt-2">
+                {meta.projects.map((proj, i) => (
+                  <div key={`${key}-proj-${i}`}>
+                    <div class="md:text-lg font-medium">{proj.name} <span class="text-muted-foreground">({proj.period})</span></div>
+                    {Array.isArray(proj.details) && (
+                      <ul class="list-disc list-inside ml-4">
+                        {proj.details.map((d, j) => <li key={`d-${j}`}>{d}</li>)}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          
+        </TimeLineElement>
+      );
+    })}
+  </div>
+
+</section>
