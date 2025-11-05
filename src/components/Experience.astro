@@ -1,67 +1,70 @@
 ---
-// src/components/Experience.astro
-import TimeLineElement from "../components/cv/TimeLine.astro";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import { formatPeriod } from "../utils/date";
 
-// load all experience entries from the "experience" collection
-let entries = await getCollection('experience');
-
-// sort by start date descending (newest first). Strings like "2024-01" sort correctly.
-// fallback to title if start missing.
-entries = entries.sort((a, b) => {
-  const aKey = a.data.start ?? a.data.title ?? '';
-  const bKey = b.data.start ?? b.data.title ?? '';
-  return bKey.localeCompare(aKey);
+const entries = (await getCollection("experience")).sort((a, b) => {
+  return b.data.start.localeCompare(a.data.start);
 });
 ---
+
 <section class="space-y-6">
   <div class="time-line-container mb-12">
-    {entries.map((entry) => {
-      const meta = entry.data;
-      const key = meta.id;
-      const company = meta.company;
-      const title = meta.title;
-      const period = `${meta.start} – ${meta.end}`;
-
-      return (
-
-
-        <TimeLineElement key={key} company={company} title={title} period={period}>
-          <div class="card-actions justify-start my-4">
-            {meta.tech && meta.tech.map((tech) => <div class="badge badge-outline rounded-full p-3 lg:p-4 lg:text-lg">{tech}</div>)}
+    {
+      entries.map(({ data }) => (
+        <div class="flex">
+          <div class="education__time">
+            <span class="w-4 h-4 bg-primary block rounded-full mt-1"></span>
+            <span class="education__line bg-primary block h-full w-[2px] translate-x-[7px]"></span>
           </div>
-          {/* description: array of paragraphs */}
-          {Array.isArray(meta.description) && (
-            <ul class="list-disc list-inside ml-4 mb-6 md:text-lg">
-              {meta.description.map((p, i) => (
-                <li key={`${key}-desc-${i}`}>{p}</li>
-              ))}
-            </ul>
-          )}
+          <div class="experience__data bd-grid px-5">
+            <h2 class="text-lg md:text-xl font-bold mb-1">{data.company}</h2>
+            <h3 class="text-lg md:text-xl font-semibold mb-1">{data.title}</h3>
+            <span class="font-light md:text-lg">{formatPeriod(data.start, data.end)}</span>
 
-          {/* optional projects / highlights */}
-          {Array.isArray(meta.projects) && meta.projects.length > 0 && (
-            <div class="mb-6">
-              <h4 class="font-medium md:text-lg">Projects Highlights</h4>
-              <div class="space-y-2 mt-2">
-                {meta.projects.map((proj, i) => (
-                  <div key={`${key}-proj-${i}`}>
-                    <div class="md:text-lg font-medium">{proj.name} <span class="text-muted-foreground">({proj.period})</span></div>
-                    {Array.isArray(proj.details) && (
-                      <ul class="list-disc list-inside ml-4">
-                        {proj.details.map((d, j) => <li key={`d-${j}`}>{d}</li>)}
-                      </ul>
-                    )}
+            <div class="my-2 text-justify">
+              {data.tech && data.tech.length > 0 && (
+                <div class="card-actions justify-start my-4">
+                  {data.tech.map((tech) => (
+                    <div class="badge badge-outline rounded-full p-2 md:p-3 lg:text-lg">
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {data.description && data.description.length > 0 && (
+                <ul class="list-disc list-outside ml-6 mb-6 text-sm md:text-lg space-y-1">
+                  {data.description.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              )}
+
+              {data.projects && data.projects.length > 0 && (
+                <div class="mb-6">
+                  <h4 class="text-lg md:text-xl font-bold mb-1">Projects Highlights</h4>
+                  <div class="space-y-2 mt-2">
+                    {data.projects.map((project) => (
+                      <div>
+                        <div class="text-lg md:text-xl font-semibold mb-1">
+                          {project.name}
+                        </div>
+                        {project.details && project.details.length > 0 && (
+                          <ul class="list-disc list-outside ml-6 mb-6 text-sm md:text-lg space-y-1">
+                            {project.details.map((detail) => (
+                              <li>{detail}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
-          )}
-
-          
-        </TimeLineElement>
-      );
-    })}
+          </div>
+        </div>
+      ))
+    }
   </div>
-
 </section>

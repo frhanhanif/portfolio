@@ -24,13 +24,45 @@ const storeSchema = z.object({
     heroImage: z.string().optional(),
 });
 
+const experienceSchema = z.object({
+    id: z.string(),
+    title: z.string(),
+    company: z.string(),
+    start: z.string(),
+    end: z.string(),
+    location: z.string().optional(),
+    tech: z.array(z.string()).optional(),
+    description: z.array(z.string()).optional(),
+    projects: z.array(z.object({
+        name: z.string(),
+        details: z.array(z.string()).optional(),
+    })).optional(),
+});
+
+const educationSchema = z.object({
+    id: z.string(),
+    institution: z.string(),
+    degree: z.string(),
+    start: z.string(),
+    end: z.string(),
+    location: z.string().optional(),
+    publication: z.string().optional(),
+    awards: z.array(z.string()).optional(),
+});
+
 export type BlogSchema = z.infer<typeof blogSchema>;
 export type StoreSchema = z.infer<typeof storeSchema>;
+export type ExperienceSchema = z.infer<typeof experienceSchema>;
+export type EducationSchema = z.infer<typeof educationSchema>;
 
 const blogCollection = defineCollection({ schema: blogSchema });
 const storeCollection = defineCollection({ schema: storeSchema });
+const experienceCollection = defineCollection({ schema: experienceSchema });
+const educationCollection = defineCollection({ schema: educationSchema });
 
 export const collections = {
     'blog': blogCollection,
-    'store': storeCollection
+    'store': storeCollection,
+    'experience': experienceCollection,
+    'education': educationCollection,
 }

@@ -2,8 +2,8 @@
 id: "idstar"
 title: "Junior Java Developer (Intern)"
 company: "IDStar Cipta Teknologi"
-start: "Aug 2020"
-end: "Sep 2020"
+start: "2020-08"
+end: "2020-09"
 location: "Jakarta, Indonesia"
 tech: ["Java","Angular","Spring Boot","MySQL","Git","Laravel"]
 description:
