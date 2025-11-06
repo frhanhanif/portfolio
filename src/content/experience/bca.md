@@ -13,10 +13,10 @@ description:
 projects:
   - name: "Remittance Investigation"
     details:
-      - "Developed backend and frontend for SWIFT MT & ISO20022 investigation application."
-      - "Revised and modernized legacy codebase and implemented improvements in the web application."
-      - "Performed SQL queries optimization, indexing, and housekeeping to reduce peak delays and improve processing speed."
-      - "Automated batch processes and managed deployment on Linux server."
+      - "Developed backend (Spring Boot) and frontend (Angular) for SWIFT MT & ISO20022 investigation application"
+      - "Deployed applications on WebLogic and automate batch jobs orchestrated via Control-M, in coordination with middleware teams"
+      - "Refactored and modernized a legacy codebase, improving scalability and maintainability"
+      - "Optimized SQL queries, indexing, and housekeeping to reduce peak-time delays and enhance processing speed"
   - name: "ISO 20022 - CSV Converter Tool"
     details:
       - "Built a Java-based converter to transform SWIFT ISO20022 XML to CSV format."

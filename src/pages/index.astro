@@ -1,37 +1,84 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SideBar from "../components/SideBar.astro";
 import About from "@components/About.astro";
+import Skills from "@components/Skills.astro";
 import Experience from "@components/Experience.astro";
 import Education from "@components/Education.astro";
-
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import Contact from "@components/Contact.astro";
 ---
 
-<BaseLayout>
-  <!-- About -->
-  <div class="flex flex-col justify-center min-h-[90vh] px-2 pb-16">
-    <About/>
-  </div>
+<!doctype html>
+<html lang="en" data-theme="lofi">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <div class="bg-base-100 drawer">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <div class="drawer-content bg-base-100">
+        <Header />
+        <div class="md:flex md:justify-center">
+          <main class="p-4 lg:max-w-[1200px] max-w-[100vw]">
+            
+            <!-- About -->
+            <div class="flex flex-col justify-center min-h-[90vh] px-2 pb-16">
+              <About/>
+            </div>
+            <div class="divider my-0 mb-8"></div>
 
-  <!-- Experience -->
-  <div class="mb-5">
-    <div class="text-2xl md:text-4xl w-full font-bold mb-8">
-      <h2 class="relative pl-[60px] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:w-[50px] before:h-[3px] before:bg-base-content">
-        Experience
-      </h2>
+            <!-- Skills -->
+            <div id="skills" class="mb-5">
+              <div class="text-2xl md:text-4xl w-full font-bold mb-8">
+                <h2 class="relative pl-[60px] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:w-[50px] before:h-[3px] before:bg-base-content">
+                  Skills
+                </h2>
+              </div>
+              <Skills/>
+            </div>
+            <div class="divider my-0 mb-8"></div>
+
+            <!-- Experience -->
+            <div id="experience" class="mb-5">
+              <div class="text-2xl md:text-4xl w-full font-bold mb-8">
+                <h2 class="relative pl-[60px] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:w-[50px] before:h-[3px] before:bg-base-content">
+                  Experience
+                </h2>
+              </div>
+              <Experience/>
+            </div>
+            <div class="divider my-0 mb-8"></div>
+
+            <!-- Education -->
+            <div id="education" class="mb-5">
+              <div class="text-2xl md:text-4xl w-full font-bold mb-8">
+                <h2 class="relative pl-[60px] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:w-[50px] before:h-[3px] before:bg-base-content">
+                  Education
+                </h2>
+              </div>
+              <Education/>
+            </div>
+            <div class="divider mt-12"></div>
+
+            <!-- Contact -->
+            <div id="contact" class="mb-5">
+              <div class="text-2xl md:text-4xl w-full font-bold mb-8">
+                <h2 class="relative pl-[60px] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:w-[50px] before:h-[3px] before:bg-base-content">
+                  Contact
+                </h2>
+              </div>
+              <Contact/>
+            </div>
+          </main>
+        </div>
+        <div>
+          <Footer />
+        </div>
+      </div>
+      <SideBar/>
     </div>
-    <Experience/>
-  </div>
-  <div class="divider my-0 mb-8"></div>
-
-  <!-- Education -->
-  <div class="mb-5">
-    <div class="text-2xl md:text-4xl w-full font-bold mb-8">
-      <h2 class="relative pl-[60px] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:w-[50px] before:h-[3px] before:bg-base-content">
-        Education
-      </h2>
-    </div>
-    <Education/>
-  </div>
-
-</BaseLayout>
+  </body>
+</html>

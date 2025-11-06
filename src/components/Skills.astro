@@ -1,0 +1,24 @@
+---
+import { skills } from "../data/skills";
+
+const sortedSkills = skills.sort((a, b) => a.order - b.order);
+---
+
+<section class="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 mb-12">
+  {
+    sortedSkills.map((skill) => (
+      <div class="card bg-base-100 border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300">
+        <div class="card-body flex-row items-center gap-4 p-2 md:p-4">
+          <img
+            src={skill.icon}
+            alt={skill.name}
+            class="w-10 h-10 object-contain flex-shrink-0"
+          />
+          <h3 class="text-base md:text-lg font-semibold">
+            {skill.name}
+          </h3>
+        </div>
+      </div>
+    ))
+  }
+</section>

@@ -4,4 +4,4 @@
 export const SITE_TITLE = 'Farhan Hanifputra';
 export const SITE_DESCRIPTION = 'This Farhan Hanifputra portfolio website built with Astro.';
 export const GENERATE_SLUG_FROM_TITLE = true
-export const TRANSITION_API = true
+export const TRANSITION_API = false

@@ -1,33 +1,21 @@
 ---
 import SideBarFooter from "./SideBarFooter.astro";
 import { Image } from "astro:assets";
-import SideBarMenu from "./SideBarMenu.astro";
 import { menuItems } from "src/data/menu";
 const { sideBarActiveItemID } = Astro.props;
 ---
 
 <div class="drawer-side z-40">
   <label for="my-drawer" class="drawer-overlay"></label>
-  <aside class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col">
-    <div class="w-fit mx-auto mt-24 mb-12">
-      <a href="/">
-        <div class="avatar transition ease-in-out hover:scale-[102%] block m-auto">
-          <div class="w-[8.5rem]">
-            <Image class="mask mask-circle" format="webp" width={300} height={300} src="/profile.webp" alt="Profile image" />
-          </div>
-        </div>
-      </a>
-    </div>
-    <ul class="menu grow shrink menu-md overflow-y-auto">
+  <aside class="px-2 pt-2 h-auto min-h-full w-[16rem] bg-base-200 text-base-content flex flex-col">
+    <ul class="menu grow shrink menu-md overflow-y-auto flex flex-col items-center justify-center">
       {menuItems.map(item => (
         <li>
           <a class="btn btn-ghost normal-case text-2xl m-4" id={item.id} href={item.href}>
             {item.label}
           </a>
-        </li>      
+        </li>
       ))}
     </ul>
-
-    <SideBarFooter />
   </aside>
 </div>

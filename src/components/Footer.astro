@@ -1,13 +1,20 @@
 ---
 const today = new Date();
+import { skills } from "../data/skills";
+const astro = skills.find(skill => skill.name === "Astro");
 ---
 
 <footer class="footer footer-center block mb-5 pt-10">
   <div class="pb-2">
     &copy; {today.getFullYear()} Farhan Hanifputra
   </div>
-  <div class="inline opacity-75">
-    Developed by <a class="font-bold">Farhan Hanifputra ⚡️</a>
+  <div class="opacity-75 flex flex-row items-center gap-1">
+    Developed by <a class="font-bold">Farhan Hanifputra ⚡️</a>. Made with           
+    <img
+            src={astro?.icon}
+            alt={astro?.name}
+            class="w-5 h-5 object-contain flex-shrink-0"
+          />
   </div>
 </footer>
 <style></style>

@@ -8,7 +8,7 @@ const entries = (await getCollection("experience")).sort((a, b) => {
 ---
 
 <section class="space-y-6">
-  <div class="time-line-container mb-12">
+  <div class="time-line-container">
     {
       entries.map(({ data }) => (
         <div class="flex">
@@ -25,7 +25,7 @@ const entries = (await getCollection("experience")).sort((a, b) => {
               {data.tech && data.tech.length > 0 && (
                 <div class="card-actions justify-start my-4">
                   {data.tech.map((tech) => (
-                    <div class="badge badge-outline rounded-full p-2 md:p-3 lg:text-lg">
+                    <div class="badge badge-outline rounded-full p-2 md:p-3 lg:text-lg hover:border-primary lg:hover:text-xl hover:shadow-lg transition-all duration-300">
                       {tech}
                     </div>
                   ))}
