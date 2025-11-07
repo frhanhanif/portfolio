@@ -6,6 +6,7 @@ import SideBar from "../components/SideBar.astro";
 import About from "@components/About.astro";
 import Skills from "@components/Skills.astro";
 import Experience from "@components/Experience.astro";
+import HobbyProjects from "@components/HobbyProjects.astro";
 import Education from "@components/Education.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Contact from "@components/Contact.astro";
@@ -53,7 +54,16 @@ import HorizontalCard from "@components/HorizontalCard.astro";
             </div>
             <div class="divider my-0 mb-8"></div>
 
-            <!-- Project -->
+            <!-- Hobby Project -->
+            <div id="hobby-project" class="mb-5">
+              <div class="text-2xl md:text-4xl w-full font-bold mb-8">
+                <h2 class="relative pl-[60px] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:w-[50px] before:h-[3px] before:bg-base-content">
+                  Hobby Project
+                </h2>
+              </div>
+              <HobbyProjects/>
+            </div>
+            <div class="divider my-0 mb-8"></div>
 
             <!-- Education -->
             <div id="education" class="mb-5">

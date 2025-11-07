@@ -33,7 +33,7 @@ const entries = await getCollection("education");
             <h4 class="font-medium text-lg lg:text-xl mb-2">Awards & Activities</h4>
             <ul class="list-disc list-outside ml-6 mb-6 text-sm md:text-lg space-y-1">
               {data.awards.map((award) => (
-                <li>{award}</li>
+                <li set:html={award}></li>
               ))}
             </ul>
           </div>

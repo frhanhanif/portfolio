@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import HorizontalCard from "./HorizontalCard.astro";
+
+const entries = await getCollection("hobby-project");
+---
+
+<section class="space-y-0">
+  {
+    entries.map(({ data }, index) => (
+      <>
+        <HorizontalCard
+          title={data.title}
+          img={data.img}
+          desc={data.desc}
+          url={data.url}
+          tags={data.tag}
+        />
+        {index < entries.length - 1 && <div class="divider my-0"></div>}
+      </>
+    ))
+  }
+</section>
