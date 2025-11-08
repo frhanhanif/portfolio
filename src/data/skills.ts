@@ -79,9 +79,9 @@ export const skills: Skill[] = [
     order: 12,
   },
   {
-    id: "bootstrap",
-    name: "Bootstrap",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg",
+    id: "vercel",
+    name: "Vercel",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
     order: 13,
   },
   {
@@ -114,4 +114,5 @@ export const skills: Skill[] = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg",
     order: 18,
   },
+
 ];

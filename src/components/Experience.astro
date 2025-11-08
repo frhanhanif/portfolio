@@ -13,8 +13,8 @@ const entries = (await getCollection("experience")).sort((a, b) => {
       entries.map(({ data }) => (
         <div class="flex">
           <div class="education__time">
-            <span class="w-4 h-4 bg-primary block rounded-full mt-1"></span>
-            <span class="education__line bg-primary block h-full w-[2px] translate-x-[7px]"></span>
+            <span class="w-4 h-4 bg-base-content block rounded-full mt-1"></span>
+            <span class="education__line bg-base-content block h-full w-[2px] translate-x-[7px]"></span>
           </div>
           <div class="experience__data bd-grid px-5">
             <h2 class="text-lg md:text-xl font-bold mb-1">{data.company}</h2>

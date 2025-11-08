@@ -1,6 +1,4 @@
 ---
-import SideBarFooter from "./SideBarFooter.astro";
-import { Image } from "astro:assets";
 import { menuItems } from "src/data/menu";
 const { sideBarActiveItemID } = Astro.props;
 ---
@@ -11,7 +9,7 @@ const { sideBarActiveItemID } = Astro.props;
     <ul class="menu grow shrink menu-md overflow-y-auto flex flex-col items-center justify-center">
       {menuItems.map(item => (
         <li>
-          <a class="btn btn-ghost normal-case text-2xl m-4" id={item.id} href={item.href}>
+          <a class="btn btn-ghost normal-case text-xl m-2" id={item.id} href={item.href}>
             {item.label}
           </a>
         </li>

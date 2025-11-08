@@ -1,6 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 
 export interface Props {
@@ -10,7 +8,7 @@ export interface Props {
 	ogType?: string;
 }
 
-const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
+const { title, description, image = '/porfolio.webp', ogType = 'website' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -37,3 +35,14 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Theme Script - Prevents flash of wrong theme -->
+<script is:inline>
+  // This script runs before the page renders to prevent theme flash
+  (function() {
+    const savedTheme = localStorage.getItem('theme');
+    const theme = savedTheme || 'corporate'; // Default to corporate theme
+
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
